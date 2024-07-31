@@ -1,0 +1,316 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+
+    /* background-image: url(./assets/guideImages/guideBackgroundImage.png); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/*Main Content*/
+#mainContent, #playContent, #guideContent, #knightsContent, #weaponsContent{
+    height: 100%;
+    width: 100%;
+    
+    display: grid;
+    place-items: center
+}
+
+.wrapper{
+    height: 100%;
+    width: 1200px;
+    /* border: 1px solid red; */
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mainContent .container{
+    gap: 50px;
+}
+
+/* Menu Items */
+#menuTitle{
+    height: 200px;
+    width: 700px;
+    object-fit: cover;
+    
+    display: grid;
+    place-items: center;
+}
+
+#menuTitle img{
+    width: 55%;
+    height: 100%;
+}
+
+.menuItem{
+    height: 110px;
+    width: 250px;
+}
+
+#playButton, #guideButton, #knightsButton, #weaponsButton{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+}
+
+#playButton:hover, #guideButton:hover, #knightsButton:hover, #weaponsButton:hover{
+    padding: 0px;
+}
+
+#playButton img, #guideButton img, #knightsButton img, #weaponsButton img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.backButton{
+    height: 100px;
+    width: 200px;
+    border: none;
+    background-image: url(/assets/menuImages/backButtonImage.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    margin-top: auto;
+    margin-right: auto;
+}
+
+.backButton:hover{
+    margin-bottom: 10px;
+}
+
+/* Play Menu */
+#playContent{
+    display: grid;
+    place-items: center;
+    font-family: "MedievalSharp";
+}
+
+#levelsMenu{
+    height: 70%;
+    width: 50%;
+    margin-top: 50px;
+
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px;
+}
+
+.level{
+    height: 200px;
+    width: 150px;
+    background-image: url(./assets/playAssets/levelSelectionImage.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 25px;
+    cursor: pointer;
+    color: goldenrod;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.level:hover{
+    font-size: 27px;
+    padding: 80px;
+}
+
+/* Guide Menu */
+#guideContent{
+    display: grid;
+    place-items: center;
+    font-family: "MedievalSharp";
+}
+
+#guide{
+    height: 80%;
+    width: 100%;
+    margin-top: 50px;
+    background-color: burlywood;
+    border-radius: 6px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#guide p{
+    font-size: 30px;
+    letter-spacing: 0.5px;
+}
+
+#guide .number{
+    color: red;
+}
+
+/* Knights Menu */
+#knightsContent{
+    font-family: "MedievalSharp";
+    letter-spacing: 0.5px;
+
+    display: grid;
+    place-items: center;
+}
+
+#playableOrEnemySelection{
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#playableOrEnemySelection button{
+    height: 50px;
+    width: 250px;
+    font-size: 24px;
+    border-radius: 8px;
+    font-family: "MedievalSharp";
+    letter-spacing: 0.5px;
+    color: white;
+    border: 1px solid goldenrod;
+    cursor: pointer;
+}
+
+#playableOrEnemySelection button:hover{
+    border: 3px solid goldenrod;
+}
+
+#playableKnightsButton{
+    background-color: #0049a8;
+
+    display: grid;
+    place-items: center;
+}
+
+#enemyKnightsButton{
+    background-color: maroon;
+
+    display: grid;
+    place-items: center;
+}
+
+#playableKnightsMenu{
+    height: 580px;
+    width: 100%;
+    background-color: burlywood;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#playableKnightsMenu .knightCard{
+    padding: 4px;
+    border-radius: 8px;
+    cursor: pointer;    
+}
+
+#playableKnightsMenu .knightCard:hover{
+    padding: 0px;
+    border: 2px solid goldenrod;
+}
+
+#enemyKnightsMenu{
+    height: 580px;
+    width: 100%;
+    background-color: burlywood;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.knightCard, .enemyKnightCard{
+    height: 90%;
+    width: 30%;
+    text-align: center;
+
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#pageButtons{
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+#pageButtons button{
+    height: 40px;
+    width: 200px;
+    padding: 5px;
+    font-size: 20px;
+    font-family: "MedievalSharp";
+    cursor: pointer;
+    background-color: goldenrod;
+    border-radius: 8px;
+    border: 1px solid maroon;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pageButtons button:hover{
+    border: 2px solid maroon;
+}
+
+#numberOfPages{
+    font-weight: 700;
+}
+
+/* Weapons Menu */
+#weaponsContent{
+    display: grid;
+    place-items: center;
+}
+
+#weapons{
+    height: 65%;
+    width: 100%;
+    background-color: burlywood;
+    margin-top: 50px;
+}
+
+

@@ -1,0 +1,38 @@
+levels: 9
+
+playable knights: 4 
+1. infantryKnight (health: 100);
+2. commanderKnight (health: 150);
+3. baronKnight (health: 200);
+4. nobleKnight (health: 300);
+
+enemy knights: 9
+1. peasant knight (health: 80);
+2. squire knight (health: 90);
+3. infantry knight (health: 100);
+4. captain knight (health: 150);
+5. viscount knight (health: 200);
+6. duke knight (health: 250);
+7. champion knight (health: 300);
+8. king knight (health: 400);
+9. templar knight (health: 350);
+
+playable weapons: 6
+1. knight weapons: 4
+  1. sword (damage: 20);
+  2. longsword (damage: 25);
+  3. battle axe (damage: 30);
+  4. greatsword (damage: 35);
+2. equippable weapons: 2
+  1. shield
+
+enemy weapons: 9
+1. club (damage: 10);
+2. cutlass (damage: 15);
+3. sword (damage: 20);
+4. longsword (damage: 25);
+5. battleaxe (damage: 30);
+6. greatsword (damage: 35);
+7. mace (damage: 40);
+8. warhammer (damage: 45);
+9. dual swords (damage: 60);

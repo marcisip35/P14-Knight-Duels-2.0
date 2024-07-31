@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>King Duels</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="./script.js"></script>
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <!-- -->
+</head>
+
+<body id="body">
+    <!-- Main Content -->
+    <div id="mainContent">
+        <div class="wrapper">
+            <div class="container">
+                <div id="menuTitle">
+                    <img src="./assets/menuImages/menuTitleImage.png">
+                </div>
+                <div class="menuItem">
+                    <button id="playButton"><img src="./assets/menuImages/menuPlayImage.png"></button>
+                </div>
+                <div class="menuItem">
+                    <button id="guideButton"><img src="./assets/menuImages/menuGuideImage.png"></button>
+                </div>
+                <div class="menuItem">
+                    <button id="knightsButton"><img src="./assets/menuImages/menuKnightsImage.png"></button>
+                </div>
+                <div class="menuItem">
+                    <button id="weaponsButton"><img src="./assets/menuImages/menuWeaponsImage.png"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Play Content-->
+    <div id="playContent">
+        <div class="wrapper">
+            <div class="container">
+                <h1 style="margin-top: 20px">Select A Level</h1>
+                <div id="levelsMenu">
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>1</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>2</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>3</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>4</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>5</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>6</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>7</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>8</h1>
+                    </div>
+                    <div class="level">
+                        <h2>Level</h2>
+                        <h1>9</h1>
+                    </div>
+                </div>
+                <button class="backButton"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guide Menu -->
+    <div id="guideContent">
+        <div class="wrapper">
+            <div class="container">
+                <div id="guide">
+                    <h1 style="text-align: center;"><span style="color: brown">Knight Duels</span> is a turned based solo game where the point of the game is to get the enemy knight to 0 health and complete all 9 levels</h1>
+                    <p><span class="number">1.</span> Click Play and Select A Level, there are 9 different enemy knights on each level.</p>
+                    <p><span class="number">2.</span> You and your enemy will take turns playin a move</p>
+                    <p>There are 2 moves available, attack and defend</p>
+                    <p>Swords can swing, thrust and parry while axe's can only swing and parry</p>
+                    <p>Shields block greater damage but decrease your next attack</p>
+                    <p><span class="number">3.</span> You can select a Knight in the Knights tab in the Main Menu</p>
+                    <p>There are 4 playable Knights, to unlock a Knight you must have that level playable</p>
+                    <p><span class="number">4.</span> You can select a Weapon in the Weapons tab in the Main Menu</p>
+                    <p>There are 4 Weapons available and 1 shield, you can always carry a Shield</p>
+                </div>
+                <button class="backButton"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Knights Menu -->
+    <div id="knightsContent">
+        <div class="wrapper">
+            <div class="container">
+                <div id="playableOrEnemySelection">
+                    <button id="playableKnightsButton">Playable Knights</button>
+                    <h1 id="selectAKnightText">Select A Knight</h1>
+                    <button id="enemyKnightsButton">Enemy Knights</button>
+                </div>
+
+                <div id="playableKnightsMenu">
+                    <div id="infantryKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/infantryKnightImage.png">
+                        <p>Health: 100</p>
+                        <p>Weapon: Sword</p>
+                        <p class="levelUnlockedText">Unlocked: Level 1</p>
+                        <h1>Infantry Knight</h1>
+                    </div>
+                    <div id="commanderKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/commanderKnightImage.png">
+                        <p>Health: 150</p>
+                        <p>Weapon: Long Sword</p>
+                        <p class="levelUnlockedText">Unlocked: Level 3</p>
+                        <h1>Commander Knight</h1>
+                    </div>
+                    <div id="baronKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/baronKnightImage.png">
+                        <p>Health: 200</p>
+                        <p>Weapon: Battle Axe</p>
+                        <p class="levelUnlockedText">Unlocked: Level 5</p>
+                        <h1>Baron Knight</h1>
+                    </div>
+                    <div id="nobleKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/nobleKnightImage.png">
+                        <p>Health: 300</p>
+                        <p>Weapon: Great Sword</p>
+                        <p class="levelUnlockedText">Unlocked: Level 7</p>
+                        <h1>Noble Knight</h1>
+                    </div>
+                </div>
+
+                <div id="enemyKnightsMenu">
+                    <div id="peasantEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/peasantKnightImage.png">
+                        <p>Health: 80</p>
+                        <p>Weapon: Club</p>
+                        <p>Level: 1</p>
+                        <h1>Peasant Knight</h1>
+                    </div>
+                    <div id="squireEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/squireKnightImage.png">
+                        <p>Health: 90</p>
+                        <p>Weapon: Cutlass</p>
+                        <p>Level: 2</p>
+                        <h1>Squire Knight</h1>
+                    </div>
+                    <div id="infantryEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/enemyInfantryKnightImage.png">
+                        <p>Health: 100</p>
+                        <p>Weapon: Sword</p>
+                        <p>Level: 3</p>
+                        <h1>Enemy Infantry Knight</h1>
+                    </div>
+                    <div id="captainEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/knightCaptainImage.png">
+                        <p>Health: 150</p>
+                        <p>Weapon: Long Sword</p>
+                        <p>Level: 4</p>
+                        <h1>Captain Knight</h1>
+                    </div>
+                    <div id="viscountEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/viscountKnightImage.png">
+                        <p>Health: 200</p>
+                        <p>Weapon: Battle Axe</p>
+                        <p>Level: 5</p>
+                        <h1>Viscount Knight</h1>
+                    </div>
+                    <div id="dukeEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/dukeKnightImage.png">
+                        <p>Health: 250</p>
+                        <p>Weapon: Great Sword</p>
+                        <p>Level: 6</p>
+                        <h1>Duke Knight</h1>
+                    </div>
+                    <div id="championEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/championKnightImage.png">
+                        <p>Health: 300</p>
+                        <p>Weapon: Mace</p>
+                        <p>Level: 7</p>
+                        <h1>Champion Knight</h1>
+                    </div>
+                    <div id="kingEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/kingKnightImage.png">
+                        <p>Health: 400</p>
+                        <p>Weapon: War Hammer</p>
+                        <p>Level: 8</p>
+                        <h1>King Knight</h1>
+                    </div>
+                    <div id="templarEnemyKnight" class="knightCard">
+                        <img src="./assets/knightsAssets/templarKnightImage.png">
+                        <p>Health: 500</p>
+                        <p>Weapon: Dual Sword</p>
+                        <p>Level:9</p>
+                        <h1>Templar Knight</h1>
+                    </div>
+                </div>
+
+                <div id="pageButtons">
+                    <button type="button" class="previousPage">Previous Page</button>
+                    <button type="button" class="previousPage">Previous Page</button>
+                    <p id="numberOfPages"></p>
+                    <button type="button" class="nextPage">Next Page</button>
+                    <button type="button" class="nextPage">Next Page</button>
+                </div>
+
+                <button class="backButton"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weapons Menu -->
+    <div id="weaponsContent">
+        <div class="wrapper">
+            <div class="container">
+                <h1 style="margin-top: 20px">Select A Weapon</h1>
+                <div id="weapons">
+                </div>
+                <div id="pageButtons">
+                    <button type="button" class="previousPage">Previous Page</button>
+                    <p id="numberOfPages"></p>
+                    <button type="button" class="nextPage">Next Page</button>
+                </div>
+                <button class="backButton"></button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
