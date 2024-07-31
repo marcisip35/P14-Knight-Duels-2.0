@@ -85,7 +85,7 @@ body{
     height: 100px;
     width: 200px;
     border: none;
-    background-image: url(/assets/menuImages/backButtonImage.png);
+    background-image: url(./assets/menuImages/backButtonImage.png);
     background-repeat: no-repeat;
     background-color: transparent;
     background-position: center;
