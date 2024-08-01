@@ -19,10 +19,10 @@ enemy knights: 9
 
 playable weapons: 6
 1. knight weapons: 4
-  1. sword (damage: 20);
-  2. longsword (damage: 25);
-  3. battle axe (damage: 30);
-  4. greatsword (damage: 35);
+  1. sword (damage: 20 , parry: 20);
+  2. longsword (damage: 25 , parry: 40);
+  3. battle axe (damage: 30 , parry: 0);
+  4. greatsword (damage: 35 , parry: 60);
 2. equippable weapons: 2
   1. shield
 

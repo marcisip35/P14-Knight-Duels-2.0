@@ -296,7 +296,7 @@ body{
     border: 2px solid maroon;
 }
 
-#numberOfPages{
+.numberOfPages{
     font-weight: 700;
 }
 
@@ -304,6 +304,7 @@ body{
 #weaponsContent{
     display: grid;
     place-items: center;
+    font-family: "MedievalSharp";
 }
 
 #weapons{
@@ -311,6 +312,35 @@ body{
     width: 100%;
     background-color: burlywood;
     margin-top: 50px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weapon{
+    height: 90%;
+    width: 30%;
+    text-align: center;
+    padding: 0px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.weapon:hover{
+    border: 2px solid goldenrod;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.weapon img{
+    height: 380px;
+    width: 100%;
 }
 
 

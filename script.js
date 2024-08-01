@@ -5,13 +5,17 @@ const guideContent = document.getElementById("guideContent");
 const knightsContent = document.getElementById("knightsContent");
 const weaponsContent = document.getElementById("weaponsContent");
 const backButton = document.getElementsByClassName("backButton");
-let selectedKnight = "";
-let levelsUnlocked = 5;
+let selectedKnight = "Infantry Knight";
+let selectedWeapon = "Sword";
+let levelsUnlocked = 1;
 let knightsUnlocked = 1;
+let weaponsUnlocked = 1;
+
 menu();
 
 //Main Menu
 function menu() {
+    //display the Main Menu
     mainContent.style.display = "grid";
     playContent.style.display = "none";
     guideContent.style.display = "none";
@@ -39,20 +43,23 @@ function playMenu() {
     body.style.backgroundImage = "url(./assets/playAssets/playMenuBackgroundImage.png)";
     const levels = document.getElementsByClassName("level");
     let levelSelected = 0;
+    const knightsArray = knightsMenu();
 
-    for(let i = 0; i < levels.length; i++){
+    console.log(selectedKnight + ", " + selectedWeapon);
+
+    for (let i = 0; i < levels.length; i++) {
         //unlocked levels are marked black
-        if(i >= levelsUnlocked){
+        if (i >= levelsUnlocked) {
             levels[i].style.color = "black";
             levels[i].style.cursor = "default";
             levels[i].style.padding = "0px";
             levels[i].style.fontSize = "25px";
         }
-        
-        levels[i].addEventListener("click", function(){
+
+        levels[i].addEventListener("click", function () {
             levelSelected = i + 1;
-           
-            switch(levelSelected){
+
+            switch (levelSelected) {
                 case 1:
                     levelOne();
                     break;
@@ -86,43 +93,43 @@ function playMenu() {
         });
     }
 
-    function levelOne(){
+    function levelOne() {
 
     };
 
-    function levelTwo(){
+    function levelTwo() {
 
     };
 
-    function levelThree(){
+    function levelThree() {
 
     };
 
-    function levelFour(){
+    function levelFour() {
 
     };
 
-    function levelFive(){
+    function levelFive() {
 
     };
 
-    function levelSix(){
+    function levelSix() {
 
     };
 
-    function levelSeven(){
+    function levelSeven() {
 
     };
 
-    function levelEight(){
+    function levelEight() {
 
     };
 
-    function levelNine(){
+    function levelNine() {
 
     };
 
-    backButton[0].addEventListener("click", function(){
+    backButton[0].addEventListener("click", function () {
         menu();
     });
 }
@@ -148,9 +155,10 @@ function knightsMenu() {
     const enemyKnightsMenu = document.getElementById("enemyKnightsMenu");
     const nextPage = document.getElementsByClassName("nextPage");
     const previousPage = document.getElementsByClassName("previousPage");
+    const knightsArray = [];
     let hasPlayedOnce = false;
 
-    const knightsArray = [
+    const playableKnightsArray = [
         {
             knightName: "Infantry Knight",
             knightHealth: 100,
@@ -180,6 +188,8 @@ function knightsMenu() {
             knightImage: "./assets/knightsAssets/nobleKnightImage.png",
         }
     ];
+
+    knightsArray.push(playableKnightsArray);
 
     const enemyKnightsArray = [
         {
@@ -247,31 +257,29 @@ function knightsMenu() {
         },
     ];
 
+    knightsArray.push(enemyKnightsArray);
+
     //Displays playable knights first once
     if (!hasPlayedOnce) {
         playableKnights();
         hasPlayedOnce = true;
     }
 
+    //show the playable knights
     playableKnightsButton.addEventListener("click", function () {
         playableKnights();
     });
 
+    //show the enemy knights
     enemyKnightsButton.addEventListener("click", function () {
         enemyKnights();
-    });
-
-    backButton[2].addEventListener("click", function () {
-        enemyKnightsMenu.style.display = "none";
-        playableKnightsMenu.style.display = "flex";
-        menu();
     });
 
     function playableKnights() {
         enemyKnightsMenu.style.display = "none";
         playableKnightsMenu.style.display = "flex";
         const playableKnightCard = document.querySelectorAll("#playableKnightsMenu .knightCard");
-        const numberOfPages = document.getElementById("numberOfPages");
+        const numberOfPages = document.getElementsByClassName("numberOfPages");
         const numOfPages = calcNumOfPages();
         const levelUnlockedText = document.getElementsByClassName("levelUnlockedText");
         const selectAKnightText = document.getElementById("selectAKnightText");
@@ -279,8 +287,9 @@ function knightsMenu() {
         const nextPageButton = nextPage[0];
         const previousPageButton = previousPage[0];
         let pageNum = 1;
-        numberOfPages.innerHTML = `${pageNum} / ${numOfPages}`;
+        numberOfPages[0].innerHTML = `${pageNum} / ${numOfPages}`;
 
+        //hide and show the next and previous buttons
         hideAndShowButtons();
         function hideAndShowButtons() {
             nextPage[1].style.display = "none";
@@ -289,26 +298,30 @@ function knightsMenu() {
             previousPageButton.style.display = "flex";
         }
 
-        //displays if a Knight can be played or not
+        //displays if a knight is unlocked or locked
         lockedOrUnlockedKnights();
         function lockedOrUnlockedKnights() {
-            let count = 0;
+            let count = knightsUnlocked;
+
             for (let i = 0; i < playableKnightCard.length; i++) {
-                if (count < knightsUnlocked) {
-                    playableKnightCard[i].addEventListener("click", function () {
-                        selectedKnight = knightsArray[i].knightName;
-                    });
-                    levelUnlockedText[i].innerText = `Unlocked: Level ${knightsArray[i].knightLevel}`;
+                //locked knights
+                if (count < playableKnightCard.length) {
+                    playableKnightCard[count].style.border = "none";
+                    playableKnightCard[count].style.cursor = "default";
+                    playableKnightCard[count].style.padding = "4px";
+                    levelUnlockedText[count].innerText = "Locked";
                     count++;
-                } else {
-                    playableKnightCard[i].style.border = "none";
-                    playableKnightCard[i].style.cursor = "default";
-                    playableKnightCard[i].style.padding = "4px";
-                    levelUnlockedText[i].innerText = `Locked: Level ${knightsArray[i].knightLevel}`;
+                } 
+
+                //unlocked knights
+                if(i < count){
+                    playableKnightCard[i].addEventListener("click", function(){
+                        selectedKnight = playableKnightsArray[i].knightName;
+                    });
                 }
             }
         }
-        
+
         function calcNumOfPages() {
             let numOfPages = playableKnightCard.length / 3;
             if ((playableKnightCard.length / 3) % 1 !== 0) {
@@ -326,14 +339,27 @@ function knightsMenu() {
         function showInitial() {
             selectAKnightText.style.display = "block";
             let count = 0;
+
             for (let i = 0; i < playableKnightCard.length; i++) {
-                if (playableKnightCard[i] !== undefined) {
-                    if (count < cardsPerPage) {
-                        playableKnightCard[i].style.display = "flex";
-                        count++;
-                    } else {
-                        playableKnightCard[i].style.display = "none";
-                    }
+                if (count < cardsPerPage) {
+                    playableKnightCard[i].style.display = "flex";
+                    count++;
+                } else {
+                    playableKnightCard[i].style.display = "none";
+                }
+            }
+        }
+
+        //display the current page cards and hide the rest
+        function showPlayableCards() {
+            let cardsIndex = pageNum * cardsPerPage - (cardsPerPage);
+            let endIndex = cardsIndex + cardsPerPage - 1;
+
+            for (let i = 0; i < playableKnightCard.length; i++) {
+                if (i >= cardsIndex && i <= endIndex) {
+                    playableKnightCard[i].style.display = "flex";
+                } else {
+                    playableKnightCard[i].style.display = "none";
                 }
             }
         }
@@ -343,7 +369,7 @@ function knightsMenu() {
             if (pageNum < numOfPages) {
                 pageNum++;
                 showPlayableCards();
-                numberOfPages.innerHTML = `${pageNum} / ${numOfPages}`;
+                numberOfPages[0].innerHTML = `${pageNum} / ${numOfPages}`;
             }
         });
 
@@ -352,39 +378,25 @@ function knightsMenu() {
             if (pageNum > 1) {
                 pageNum--;
                 showPlayableCards();
-                numberOfPages.innerHTML = `${pageNum} / ${numOfPages}`;
+                numberOfPages[0].innerHTML = `${pageNum} / ${numOfPages}`;
             }
         });
 
-        //display the current page cards and hide the rest
-        function showPlayableCards() {
-            let cardsIndex = pageNum * cardsPerPage - (cardsPerPage);
-            let endIndex = cardsIndex + cardsPerPage - 1;
-
-            for (let i = 0; i < playableKnightCard.length; i++) {
-                if (playableKnightCard[i] !== undefined) {
-                    if (i >= cardsIndex && i <= endIndex) {
-                        playableKnightCard[i].style.display = "flex";
-                    } else {
-                        playableKnightCard[i].style.display = "none";
-                    }
-                }
-            }
-        }
     }
 
     function enemyKnights() {
         playableKnightsMenu.style.display = "none";
         enemyKnightsMenu.style.display = "flex";
         const enemyKnightCard = document.querySelectorAll("#enemyKnightsMenu .knightCard");
-        const numberOfPages = document.getElementById("numberOfPages");
+        const numberOfPages = document.getElementsByClassName("numberOfPages");
         const numOfPages = calcNumOfPages();
         const cardsPerPage = 3;
         let pageNum = 1;
         const nextPageButton = nextPage[1];
         const previousPageButton = previousPage[1];
-        numberOfPages.innerHTML = `${pageNum} / ${numOfPages}`;
+        numberOfPages[0].innerHTML = `${pageNum} / ${numOfPages}`;
 
+        //show and hide the next and previous buttons
         hideAndShowButtons();
         function hideAndShowButtons() {
             nextPage[0].style.display = "none";
@@ -393,8 +405,10 @@ function knightsMenu() {
             previousPageButton.style.display = "flex";
         }
 
+        //calculate number of pages needed to show the cards
         function calcNumOfPages() {
             let numOfPages = enemyKnightCard.length / 3;
+
             if ((enemyKnightCard.length / 3) % 1 !== 0) {
                 numOfPages += 1;
                 numOfPages = Math.floor(numOfPages);
@@ -410,14 +424,27 @@ function knightsMenu() {
         function showInitial() {
             selectAKnightText.style.display = "none";
             let count = 0;
+
             for (let i = 0; i < enemyKnightCard.length; i++) {
-                if (enemyKnightCard[i] !== undefined) {
-                    if (count < cardsPerPage) {
-                        enemyKnightCard[count].style.display = "flex";
-                        count++;
-                    } else {
-                        enemyKnightCard[i].style.display = "none";
-                    }
+                if (count < cardsPerPage) {
+                    enemyKnightCard[count].style.display = "flex";
+                    count++;
+                } else {
+                    enemyKnightCard[i].style.display = "none";
+                }
+            }
+        }
+
+        //show the enemy knights
+        function showEnemyCards() {
+            let cardsIndex = pageNum * cardsPerPage - (cardsPerPage);
+            let endIndex = cardsIndex + cardsPerPage - 1;
+
+            for (let i = 0; i < enemyKnightCard.length; i++) {
+                if (i >= cardsIndex && i <= endIndex) {
+                    enemyKnightCard[i].style.display = "flex";
+                } else {
+                    enemyKnightCard[i].style.display = "none";
                 }
             }
         }
@@ -427,7 +454,7 @@ function knightsMenu() {
             if (pageNum < numOfPages) {
                 pageNum++;
                 showEnemyCards();
-                numberOfPages.innerHTML = `${pageNum} / ${numOfPages}`;
+                numberOfPages[0].innerHTML = `${pageNum} / ${numOfPages}`;
             }
         });
 
@@ -436,27 +463,20 @@ function knightsMenu() {
             if (pageNum > 1) {
                 pageNum--;
                 showEnemyCards();
-                numberOfPages.innerHTML = `${pageNum} / ${numOfPages}`;
+                numberOfPages[0].innerHTML = `${pageNum} / ${numOfPages}`;
             }
         });
 
-        function showEnemyCards() {
-            let cardsIndex = pageNum * cardsPerPage - (cardsPerPage);
-            let endIndex = cardsIndex + cardsPerPage - 1;
-
-            for (let i = 0; i < enemyKnightCard.length; i++) {
-                if (enemyKnightCard[i] !== undefined) {
-                    if (i >= cardsIndex && i <= endIndex) {
-                        enemyKnightCard[i].style.display = "flex";
-                    } else {
-                        enemyKnightCard[i].style.display = "none";
-                    }
-                }
-            }
-        }
     }
 
-    return selectedKnight;
+    //return to main menu
+    backButton[2].addEventListener("click", function () {
+        enemyKnightsMenu.style.display = "none";
+        playableKnightsMenu.style.display = "flex";
+        menu();
+    });
+
+    return knightsArray;
 }
 
 //Weapons Menu
@@ -464,7 +484,131 @@ function weaponsMenu() {
     weaponsContent.style.display = "grid";
     mainContent.style.display = "none";
     body.style.backgroundImage = "url(./assets/weaponsAssets/weaponsBackgroundImage.png)";
+    const weaponClass = document.getElementsByClassName("weapon");
+    const numberOfPages = document.getElementsByClassName("numberOfPages");
+    const previousPage = document.getElementsByClassName("previousPage");
+    const nextPage = document.getElementsByClassName("nextPage");
+    const weaponUnlockedText = document.getElementsByClassName("weaponUnlockedText");
+    const previousPageButton = previousPage[2];
+    const nextPageButton = nextPage[2];
+    let pageNum = 1;
+    const weaponsPerPage = 3;
+    const numOfPages = calcNumOfPages();
+    let hasPlayedOnce = false;
+    numberOfPages[1].innerHTML = `${pageNum} / ${numOfPages}`;
 
+    const weapons = [
+        {
+            weaponName: "Sword",
+            weaponDamage: 20,
+            weaponParry: 20,
+            weaponLevel: 3,
+        },
+        {
+            weaponName: "Long Sword",
+            weaponDamage: 25,
+            weaponParry: 40,
+            weaponLevel: 5,
+        },
+        {
+            weaponName: "Battle Axe",
+            weaponDamage: 30,
+            weaponParry: 0,
+            weaponLevel: 7,
+        },
+        {
+            weaponName: "Great Sword",
+            weaponDamage: 35,
+            weaponParry: 60,
+            weaponLevel: 9,
+        }
+    ];
+
+    //display if a weapon is locked or unlocked
+    lockedOrUnlockedWeapons();
+    function lockedOrUnlockedWeapons(){
+        let count = weaponsUnlocked;
+        for(let i = 0; i < weaponClass.length; i++){
+            //locked weapons
+            if(count < weaponClass.length){
+                weaponClass[count].style.border = "none";
+                weaponClass[count].style.padding = "0px";
+                weaponClass[count].style.cursor = "default";
+                weaponUnlockedText[count].innerHTML = "Locked";
+                count++;
+            } 
+
+            //unlocked weapons
+            if(i < weaponsUnlocked){
+                weaponClass[i].addEventListener("click", function(){
+                    selectedWeapon = weapons[i].weaponName;
+                });
+            }
+        }
+    }
+
+    //calculate the number of pages needed to show the weapons
+    function calcNumOfPages() {
+        let pages = weaponClass.length / weaponsPerPage;
+        if (pages % 1 !== 0) {
+            pages += 1;
+            return Math.floor(pages);
+        } else {
+            return Math.floor(pages);
+        }
+    };
+
+    //show the first 3 weapons
+    showInitial();
+    function showInitial() {
+        let count = 0;
+        if (!hasPlayedOnce) {
+            for (let i = 0; i < weaponClass.length; i++) {
+                if (count < weaponsPerPage) {
+                    weaponClass[count].style.display = "flex";
+                    count++;
+                } else {
+                    weaponClass[i].style.display = "none";
+                }
+
+            }
+            hasPlayedOnce = true;
+        }
+    };
+
+    //show the weapons
+    function showWeaponCards() {
+        let cardsIndex = (pageNum * weaponsPerPage) - weaponsPerPage;
+        let endIndex = (cardsIndex + weaponsPerPage) - 1;
+
+        for (let i = 0; i < weaponClass.length; i++) {
+            if (i >= cardsIndex && i <= endIndex) {
+                weaponClass[i].style.display = "flex";
+            } else {
+                weaponClass[i].style.display = "none";
+            }
+        }
+    };
+
+    //show the previous page cards
+    previousPageButton.addEventListener("click", function () {
+        if (pageNum > 1) {
+            pageNum--;
+            showWeaponCards();
+            numberOfPages[1].innerHTML = `${pageNum} / ${numOfPages}`;
+        }
+    });
+
+    //show the next page cards
+    nextPageButton.addEventListener("click", function () {
+        if (pageNum < numOfPages) {
+            pageNum++;
+            showWeaponCards();
+            numberOfPages[1].innerHTML = `${pageNum} / ${numOfPages}`;
+        }
+    });
+
+    //return to main menu
     backButton[3].addEventListener("click", function () {
         menu();
     });
